@@ -6,3 +6,6 @@ bazel-*
 ignore/*
 *.ipynb_checkpoints*
 tutorials/trash
+.idea
+build/
+dist

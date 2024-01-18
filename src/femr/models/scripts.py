@@ -594,7 +594,8 @@ def train_model() -> None:
             )
             opt_state = opt.init(params)
 
-        batch = jax.tree_map(lambda a: jax.device_put(a, device=jax.devices("gpu")[0]), batch)
+        # batch = jax.tree_map(lambda a: jax.device_put(a, device=jax.devices("gpu")[0]), batch)
+        batch = jax.tree_map(lambda a: jax.device_put(a), batch)
 
         params, opt_state, batch_loss, loss_scale = update(
             params,

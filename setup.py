@@ -87,7 +87,7 @@ class cmake_build_ext(build_ext):
                 compile_mode = "opt"
 
             subprocess.run(
-                args=["bazel"] + bazel_extra_args + ["build", "-c", compile_mode, ext.target] + extra_args,
+                args=["bazelisk"] + bazel_extra_args + ["build", "-c", compile_mode, ext.target] + extra_args,
                 cwd=ext.sourcedir,
                 env=env,
                 check=True,

@@ -45,13 +45,13 @@ cc_library(
 """,
 )
 
-pybind11_bazel_version = "5a8209f6ddcc848272e27a36a5fc2b79e7438374"
+pybind11_bazel_version = "23926b00e2b2eb2fc46b17e587cf0c0cfd2f2c4b"
 
 http_archive(
   name = "pybind11_bazel",
   strip_prefix = "pybind11_bazel-" + pybind11_bazel_version,
-  urls = ["https://github.com/Lalaland/pybind11_bazel/archive/" + pybind11_bazel_version + ".tar.gz"],
-  sha256 = "cc9bd704ec128049f6b0c7a64313a690a3f53dac2f040e9d00d87cf33d45d9c1",
+  urls = ["https://github.com/pybind/pybind11_bazel/archive/"+pybind11_bazel_version+".zip"],
+  sha256 = "07e529a85cf4c11e1ca1b423149e86e63a3f3859c22efee3b3c5225ca89580f2",
 )
 
 pybind11_version = 'fab1eebe2c4c52e0abac249f3d058787bc83b5ec'
@@ -275,13 +275,13 @@ _RULES_BOOST_COMMIT = "ce6bd1a54c9527ffee7d0a87e97a2bdd50162ac2"
 
 http_archive(
     name = "com_github_nelhage_rules_boost",
-    strip_prefix = "rules_boost-%s" % _RULES_BOOST_COMMIT,
-    sha256 = "781c5413ce5d5ae8e0f90e524dc712e0ccc329bf4d5dc5850d883e64db8eff9b",
-    urls = [
-        "https://github.com/nelhage/rules_boost/archive/%s.tar.gz" % _RULES_BOOST_COMMIT,
-    ],
-)
 
+    # Replace the commit hash in both places (below) with the latest, rather than using the stale one here.
+    # Even better, set up Renovate and let it do the work for you (see "Suggestion: Updates" in the README).
+    url = "https://github.com/nelhage/rules_boost/archive/96e9b631f104b43a53c21c87b01ac538ad6f3b48.tar.gz",
+    strip_prefix = "rules_boost-96e9b631f104b43a53c21c87b01ac538ad6f3b48",
+    # When you first run this tool, it'll recommend a sha256 hash to put here with a message like: "DEBUG: Rule 'com_github_nelhage_rules_boost' indicated that a canonical reproducible form can be obtained by modifying arguments sha256 = ..."
+)
 load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
 boost_deps()
 
